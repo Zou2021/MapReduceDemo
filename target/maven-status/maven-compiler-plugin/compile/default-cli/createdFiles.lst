@@ -1,0 +1,7 @@
+com\dev1\flowsum\FlowCountMapper.class
+com\dev1\wordcount\WordCountMapper.class
+com\dev1\flowsum\FlowSumDriver.class
+com\dev1\flowsum\FlowBean.class
+com\dev1\wordcount\WordCountDriver.class
+com\dev1\flowsum\FlowCountReducer.class
+com\dev1\wordcount\WordCountReducer.class
