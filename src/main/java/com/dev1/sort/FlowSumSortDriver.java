@@ -1,4 +1,4 @@
-package com.dev1.flowsum;
+package com.dev1.sort;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -10,26 +10,30 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.util.Arrays;
 
 /**
- * @author: 邹祥发
- * @date: 2021/3/30 16:33
+ * 第四步，驱动类， 设置三个类，设置格式
+ * @author 邹祥发
+ * @date: 2021/4/9 15:10
  */
-public class FlowSumDriver {
-    public static void main(String[] args) throws Exception{
+public class FlowSumSortDriver {
+
+    public static void main(String[] args) throws Exception {
+
+        //args = new String[] { "d:/input", "d:/output1" };
         System.out.println(Arrays.toString(args));
         // 1 获取配置信息，或者job对象实例
         Configuration configuration = new Configuration();
         Job job = Job.getInstance(configuration);
 
         // 6 指定本程序的jar包所在的本地路径
-        job.setJarByClass(FlowSumDriver.class);
+        job.setJarByClass(FlowSumSortDriver.class);
 
         // 2 指定本业务job要使用的mapper/Reducer业务类
-        job.setMapperClass(FlowCountMapper.class);
-        job.setReducerClass(FlowCountReducer.class);
+        job.setMapperClass(FlowSumSortMapper.class);
+        job.setReducerClass(FlowSumSortReducer.class);
 
         // 3 指定mapper输出数据的kv类型
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(FlowBean.class);
+        job.setMapOutputKeyClass(FlowBean.class);
+        job.setMapOutputValueClass(Text.class);
 
         // 4 指定最终输出的数据的kv类型
         job.setOutputKeyClass(Text.class);
@@ -39,14 +43,11 @@ public class FlowSumDriver {
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        // 6 指定自定义数据分区
-        job.setPartitionerClass(ProvincePartitioner.class);
-
-        // 7 同时指定相应数量的reduce task
-        job.setNumReduceTasks(5);
-
-        // 8 将job中配置的相关参数，以及job所用的java类所在的jar包， 提交给yarn去运行
+        //job.setPartitionerClass(ProvincePartitioner.class);
+        //job.setNumReduceTasks(14);
+        // 7 将job中配置的相关参数，以及job所用的java类所在的jar包， 提交给yarn去运行
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
     }
+
 }
