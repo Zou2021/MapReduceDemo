@@ -39,11 +39,11 @@ public class FlowSumDriver {
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        // 6 指定自定义数据分区
-        job.setPartitionerClass(ProvincePartitioner.class);
-
-        // 7 同时指定相应数量的reduce task
-        job.setNumReduceTasks(5);
+//        // 6 指定自定义数据分区
+//        job.setPartitionerClass(ProvincePartitioner.class);
+//
+//        // 7 同时指定相应数量的reduce task
+//        job.setNumReduceTasks(5);
 
         // 8 将job中配置的相关参数，以及job所用的java类所在的jar包， 提交给yarn去运行
         boolean result = job.waitForCompletion(true);

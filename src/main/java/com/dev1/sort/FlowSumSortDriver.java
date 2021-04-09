@@ -43,8 +43,8 @@ public class FlowSumSortDriver {
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        //job.setPartitionerClass(ProvincePartitioner.class);
-        //job.setNumReduceTasks(14);
+        job.setPartitionerClass(ProvincePartitioner.class);
+        job.setNumReduceTasks(5);
         // 7 将job中配置的相关参数，以及job所用的java类所在的jar包， 提交给yarn去运行
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
