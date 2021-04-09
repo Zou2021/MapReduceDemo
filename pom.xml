@@ -65,7 +65,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.dev1.flowsum.FlowSumDriver</mainClass>
+                            <mainClass>com.dev1.sort.FlowSumSortDriver</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

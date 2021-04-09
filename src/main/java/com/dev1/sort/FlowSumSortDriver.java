@@ -18,7 +18,6 @@ public class FlowSumSortDriver {
 
     public static void main(String[] args) throws Exception {
 
-        //args = new String[] { "d:/input", "d:/output1" };
         System.out.println(Arrays.toString(args));
         // 1 获取配置信息，或者job对象实例
         Configuration configuration = new Configuration();
